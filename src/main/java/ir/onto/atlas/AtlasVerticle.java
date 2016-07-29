@@ -30,7 +30,9 @@ public class AtlasVerticle extends AbstractVerticle {
       response.end("Hello from Vert.x Web!");      
     });
 
-    vertx.createHttpServer().requestHandler(router::accept).listen(8080);
+    vertx.createHttpServer().requestHandler(router::accept).listen(
+        Integer.getInteger("http.port", 8080),
+        System.getProperty("http.address"));
     
     /*vertx
         .createHttpServer()
