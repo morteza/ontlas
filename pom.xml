@@ -4,10 +4,10 @@
                       http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
   <groupId>ir.onto</groupId>
-  <artifactId>cogatlas</artifactId>
+  <artifactId>ontlas</artifactId>
   <version>0.0.1</version>
-  <name>Cognitive Atlas (Farsi)</name>
-  <url>http://cogatlas.onto.ir</url>
+  <name>Ontology-driven Atlas</name>
+  <url>http://ontlas.onto.ir</url>
   <inceptionYear>2016</inceptionYear>
   <licenses>
 		<license>
@@ -59,6 +59,11 @@
       <scope>test</scope>
     </dependency>
     <dependency>
+      <groupId>io.vertx</groupId>
+      <artifactId>vertx-mongo-client</artifactId>
+      <version>3.3.2</version>
+    </dependency>
+    <dependency>
     	<groupId>io.vertx</groupId>
     	<artifactId>vertx-web</artifactId>
     	<version>3.3.2</version>
@@ -96,7 +101,7 @@
                   implementation="org.apache.maven.plugins.shade.resource.ManifestResourceTransformer">
                   <manifestEntries>
                     <Main-Class>io.vertx.core.Starter</Main-Class>
-                    <Main-Verticle>ir.onto.atlas.AtlasVerticle</Main-Verticle>
+                    <Main-Verticle>ir.onto.ontlas.AtlasVerticle</Main-Verticle>
                   </manifestEntries>
                 </transformer>
               </transformers>
@@ -106,6 +111,15 @@
           </execution>
         </executions>
       </plugin>
+      <plugin>
+        <groupId>io.dazraf</groupId>
+        <artifactId>vertx-hot-maven-plugin</artifactId>
+        <version>2.1.0</version>
+        <configuration>
+            <verticleReference>ir.onto.ontlas.AtlasVerticle</verticleReference>
+            <!--<configFile>config filename</configFile>-->
+        </configuration>
+    </plugin>
     </plugins>
   </build>
 

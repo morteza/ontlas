@@ -7,13 +7,13 @@
  *     Project: onto.cogatlas
  *   Copyright: See the file "LICENSE" for the full license governing this code.
  *******************************************************************************/
-package ir.onto.atlas;
+package ir.onto.ontlas;
 
 import io.vertx.core.AbstractVerticle;
 
 public class OntologyVerticle extends AbstractVerticle {
   @Override
   public void start() {
-    
+
   }
 }

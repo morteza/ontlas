@@ -1,4 +1,4 @@
-package ir.onto.atlas;
+package ir.onto.ontlas;
 
 import io.vertx.core.Vertx;
 import io.vertx.ext.unit.Async;
