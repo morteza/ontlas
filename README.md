@@ -1,3 +1,3 @@
-The OpenShift `diy` cartridge documentation can be found at:
+# Ontlas
 
-http://openshift.github.io/documentation/oo_cartridge_guide.html#diy
+An ontology-driven atlas.
