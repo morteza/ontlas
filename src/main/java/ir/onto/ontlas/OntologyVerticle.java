@@ -9,7 +9,6 @@
  *******************************************************************************/
 package ir.onto.ontlas;
 
-import org.semanticweb.owlapi.model.IRI;
 import org.semanticweb.owlapi.model.OWLOntology;
 import org.semanticweb.owlapi.model.OWLOntologyCreationException;
 import org.semanticweb.owlapi.model.OWLOntologyManager;
@@ -23,11 +22,10 @@ public class OntologyVerticle {
     try {
       OWLOntologyManager m = OWLManager.createOWLOntologyManager();
       OWLOntology o = m.loadOntologyFromOntologyDocument(ontologyFile);
-      //OWLOntology o = m.loadOntology(IRI.create("http://onto.ir/2016/1/ontlas"));
       int c = o.getAxiomCount();
       return c;
     } catch (OWLOntologyCreationException e) {
-      //e.printStackTrace();
+      e.printStackTrace();
       return -1;
     }
   }

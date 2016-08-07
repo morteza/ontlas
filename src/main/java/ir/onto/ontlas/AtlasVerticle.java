@@ -27,13 +27,13 @@ public class AtlasVerticle extends AbstractVerticle {
       HttpServerResponse response = rc.response();
       response.putHeader("content-type", "text/plain");
       
-      response.end("Axioms: "+ OntologyVerticle.axiomCount(this.getClass().getResourceAsStream("ontlas.owl")));
-      // Write to the response and end it
-      //response.end("Hello from Vert.x Web!");
+      response.end("# of axioms: "+ OntologyVerticle.axiomCount(
+          getClass().getClassLoader().getResourceAsStream("ontlas.owl"))
+      );
     });
 
     // Serve the static resources
-    //router.route().handler(StaticHandler.create());
+    router.route().handler(StaticHandler.create());
 
     vertx.createHttpServer().requestHandler(router::accept).listen(
         config().getInteger("http.port", 8080));

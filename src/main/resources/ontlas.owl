@@ -8,7 +8,87 @@ Prefix(rdfs:=<http://www.w3.org/2000/01/rdf-schema#>)
 
 Ontology(<http://onto.ir/ontologies/2016/ontlas>
 Annotation(:author "Morteza Ansarinia")
+Annotation(:author "ansarinia@me.com"@en)
 
+Declaration(Class(:Category))
+Declaration(Class(:Collection))
+Declaration(Class(:Concept))
+Declaration(Class(:ConceptCategory))
+Declaration(Class(:Disorder))
+Declaration(Class(:DisorderCategory))
+Declaration(Class(:Task))
+Declaration(Class(:TaskCategory))
+Declaration(ObjectProperty(:associatedWith))
+Declaration(ObjectProperty(:hasCondition))
+Declaration(ObjectProperty(:hasKind))
+Declaration(ObjectProperty(:hasPart))
+Declaration(ObjectProperty(:isKindOf))
+Declaration(ObjectProperty(:isPartOf))
+Declaration(DataProperty(:hasExternalLink))
 Declaration(AnnotationProperty(:author))
+Declaration(AnnotationProperty(:authorEmail))
+############################
+#   Annotation Properties
+############################
+
+# Annotation Property: :authorEmail (:authorEmail)
+
+SubAnnotationPropertyOf(:authorEmail :author)
+
+
+############################
+#   Object Properties
+############################
+
+# Object Property: :associatedWith (:associatedWith)
+
+ObjectPropertyDomain(:associatedWith :Task)
+
+# Object Property: :hasCondition (:hasCondition)
+
+ObjectPropertyDomain(:hasCondition :Task)
+
+# Object Property: :hasKind (:hasKind)
+
+InverseObjectProperties(:hasKind :isKindOf)
+
+# Object Property: :hasPart (:hasPart)
+
+InverseObjectProperties(:hasPart :isPartOf)
+
+
+############################
+#   Data Properties
+############################
+
+# Data Property: :hasExternalLink (اطلاعات بیشتر)
+
+AnnotationAssertion(rdfs:label :hasExternalLink "External Link"@en)
+AnnotationAssertion(rdfs:label :hasExternalLink "اطلاعات بیشتر"@fa)
+DataPropertyRange(:hasExternalLink xsd:string)
+
+
+
+############################
+#   Classes
+############################
+
+# Class: :Collection (:Collection)
+
+SubClassOf(:Collection :Category)
+
+# Class: :ConceptCategory (:ConceptCategory)
+
+AnnotationAssertion(rdfs:comment :ConceptCategory "دسته‌بندی مفاهیم"@fa)
+SubClassOf(:ConceptCategory :Category)
+
+# Class: :DisorderCategory (:DisorderCategory)
+
+SubClassOf(:DisorderCategory :Category)
+
+# Class: :TaskCategory (:TaskCategory)
+
+SubClassOf(:TaskCategory :Category)
+
 
 )
