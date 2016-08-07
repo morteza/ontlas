@@ -9,11 +9,26 @@
  *******************************************************************************/
 package ir.onto.ontlas;
 
-import io.vertx.core.AbstractVerticle;
+import org.semanticweb.owlapi.model.IRI;
+import org.semanticweb.owlapi.model.OWLOntology;
+import org.semanticweb.owlapi.model.OWLOntologyCreationException;
+import org.semanticweb.owlapi.model.OWLOntologyManager;
 
-public class OntologyVerticle extends AbstractVerticle {
-  @Override
-  public void start() {
+import java.io.InputStream;
 
+import org.semanticweb.owlapi.apibinding.OWLManager;
+
+public class OntologyVerticle {
+  public static int axiomCount(InputStream ontologyFile) {
+    try {
+      OWLOntologyManager m = OWLManager.createOWLOntologyManager();
+      OWLOntology o = m.loadOntologyFromOntologyDocument(ontologyFile);
+      //OWLOntology o = m.loadOntology(IRI.create("http://onto.ir/2016/1/ontlas"));
+      int c = o.getAxiomCount();
+      return c;
+    } catch (OWLOntologyCreationException e) {
+      //e.printStackTrace();
+      return -1;
+    }
   }
 }

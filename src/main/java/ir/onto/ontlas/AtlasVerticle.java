@@ -26,17 +26,17 @@ public class AtlasVerticle extends AbstractVerticle {
       // This handler gets called for each request that arrives on the server
       HttpServerResponse response = rc.response();
       response.putHeader("content-type", "text/plain");
-
+      
+      response.end("Axioms: "+ OntologyVerticle.axiomCount(this.getClass().getResourceAsStream("ontlas.owl")));
       // Write to the response and end it
-      response.end("Hello from Vert.x Web!");
+      //response.end("Hello from Vert.x Web!");
     });
 
     // Serve the static resources
-    router.route().handler(StaticHandler.create());
+    //router.route().handler(StaticHandler.create());
 
     vertx.createHttpServer().requestHandler(router::accept).listen(
-        config().getInteger("http.port", 8080),
-        System.getProperty("http.address"));
+        config().getInteger("http.port", 8080));
 
     /*vertx
         .createHttpServer()
