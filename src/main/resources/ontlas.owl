@@ -4,68 +4,78 @@ Prefix(rdf:=<http://www.w3.org/1999/02/22-rdf-syntax-ns#>)
 Prefix(xml:=<http://www.w3.org/XML/1998/namespace>)
 Prefix(xsd:=<http://www.w3.org/2001/XMLSchema#>)
 Prefix(rdfs:=<http://www.w3.org/2000/01/rdf-schema#>)
+Prefix(ontlas:=<http://onto.ir/ontologies/2016/ontlas#>)
 
 
 Ontology(<http://onto.ir/ontologies/2016/ontlas>
-Annotation(:author "Morteza Ansarinia")
-Annotation(:author "ansarinia@me.com"@en)
+Import(<http://www.w3.org/2004/02/skos/core>)
+Annotation(ontlas:author "Morteza Ansarinia")
+Annotation(ontlas:author "ansarinia@me.com"@en)
+Annotation(owl:versionInfo "0.0.1")
 
-Declaration(Class(:Category))
-Declaration(Class(:Collection))
-Declaration(Class(:Concept))
-Declaration(Class(:ConceptCategory))
-Declaration(Class(:Disorder))
-Declaration(Class(:DisorderCategory))
-Declaration(Class(:Task))
-Declaration(Class(:TaskCategory))
-Declaration(ObjectProperty(:associatedWith))
-Declaration(ObjectProperty(:hasCondition))
-Declaration(ObjectProperty(:hasKind))
-Declaration(ObjectProperty(:hasPart))
-Declaration(ObjectProperty(:isKindOf))
-Declaration(ObjectProperty(:isPartOf))
-Declaration(DataProperty(:hasExternalLink))
-Declaration(AnnotationProperty(:author))
-Declaration(AnnotationProperty(:authorEmail))
+Declaration(Class(ontlas:Category))
+Declaration(Class(ontlas:Collection))
+Declaration(Class(ontlas:Concept))
+Declaration(Class(ontlas:Disorder))
+Declaration(Class(ontlas:Locator))
+Declaration(Class(ontlas:Task))
+Declaration(ObjectProperty(ontlas:associatedWith))
+Declaration(ObjectProperty(ontlas:hasCondition))
+Declaration(ObjectProperty(ontlas:hasKind))
+Declaration(ObjectProperty(ontlas:hasPart))
+Declaration(ObjectProperty(ontlas:isKindOf))
+Declaration(ObjectProperty(ontlas:isPartOf))
+Declaration(ObjectProperty(ontlas:measuredBy))
+Declaration(DataProperty(ontlas:hasExternalLink))
+Declaration(AnnotationProperty(ontlas:author))
+Declaration(AnnotationProperty(ontlas:authorEmail))
+Declaration(AnnotationProperty(<http://purl.org/dc/elements/1.1/creator>))
+Declaration(AnnotationProperty(<http://purl.org/dc/elements/1.1/date>))
+Declaration(AnnotationProperty(<http://purl.org/dc/terms/description>))
 ############################
 #   Annotation Properties
 ############################
 
-# Annotation Property: :authorEmail (:authorEmail)
+# Annotation Property: ontlas:authorEmail (ontlas:authorEmail)
 
-SubAnnotationPropertyOf(:authorEmail :author)
+SubAnnotationPropertyOf(ontlas:authorEmail ontlas:author)
 
 
 ############################
 #   Object Properties
 ############################
 
-# Object Property: :associatedWith (:associatedWith)
+# Object Property: ontlas:associatedWith (ontlas:associatedWith)
 
-ObjectPropertyDomain(:associatedWith :Task)
+ObjectPropertyDomain(ontlas:associatedWith ontlas:Task)
 
-# Object Property: :hasCondition (:hasCondition)
+# Object Property: ontlas:hasCondition (ontlas:hasCondition)
 
-ObjectPropertyDomain(:hasCondition :Task)
+ObjectPropertyDomain(ontlas:hasCondition ontlas:Task)
 
-# Object Property: :hasKind (:hasKind)
+# Object Property: ontlas:hasKind (ontlas:hasKind)
 
-InverseObjectProperties(:hasKind :isKindOf)
+InverseObjectProperties(ontlas:hasKind ontlas:isKindOf)
 
-# Object Property: :hasPart (:hasPart)
+# Object Property: ontlas:hasPart (ontlas:hasPart)
 
-InverseObjectProperties(:hasPart :isPartOf)
+InverseObjectProperties(ontlas:hasPart ontlas:isPartOf)
+
+# Object Property: ontlas:measuredBy (ontlas:measuredBy)
+
+AnnotationAssertion(<http://purl.org/dc/elements/1.1/creator> ontlas:measuredBy "morteza"^^xsd:string)
+AnnotationAssertion(<http://purl.org/dc/elements/1.1/date> ontlas:measuredBy "1470857249784"^^xsd:long)
 
 
 ############################
 #   Data Properties
 ############################
 
-# Data Property: :hasExternalLink (اطلاعات بیشتر)
+# Data Property: ontlas:hasExternalLink (اطلاعات بیشتر)
 
-AnnotationAssertion(rdfs:label :hasExternalLink "External Link"@en)
-AnnotationAssertion(rdfs:label :hasExternalLink "اطلاعات بیشتر"@fa)
-DataPropertyRange(:hasExternalLink xsd:string)
+AnnotationAssertion(rdfs:label ontlas:hasExternalLink "External Link"@en)
+AnnotationAssertion(rdfs:label ontlas:hasExternalLink "اطلاعات بیشتر"@fa)
+DataPropertyRange(ontlas:hasExternalLink xsd:string)
 
 
 
@@ -73,22 +83,23 @@ DataPropertyRange(:hasExternalLink xsd:string)
 #   Classes
 ############################
 
-# Class: :Collection (:Collection)
+# Class: ontlas:Category (ontlas:Category)
 
-SubClassOf(:Collection :Category)
+EquivalentClasses(ontlas:Category <http://www.w3.org/2004/02/skos/core#ConceptScheme>)
 
-# Class: :ConceptCategory (:ConceptCategory)
+# Class: ontlas:Collection (ontlas:Collection)
 
-AnnotationAssertion(rdfs:comment :ConceptCategory "دسته‌بندی مفاهیم"@fa)
-SubClassOf(:ConceptCategory :Category)
+EquivalentClasses(ontlas:Collection <http://www.w3.org/2004/02/skos/core#Collection>)
 
-# Class: :DisorderCategory (:DisorderCategory)
+# Class: ontlas:Concept (ontlas:Concept)
 
-SubClassOf(:DisorderCategory :Category)
+EquivalentClasses(ontlas:Concept <http://www.w3.org/2004/02/skos/core#Concept>)
 
-# Class: :TaskCategory (:TaskCategory)
+# Class: ontlas:Locator (ontlas:Locator)
 
-SubClassOf(:TaskCategory :Category)
+AnnotationAssertion(<http://purl.org/dc/elements/1.1/creator> ontlas:Locator "morteza"^^xsd:string)
+AnnotationAssertion(<http://purl.org/dc/elements/1.1/date> ontlas:Locator "1470594790949"^^xsd:long)
+AnnotationAssertion(<http://purl.org/dc/terms/description> ontlas:Locator "Resource locator including web address, files, images, and Ontlas internal addressing."@en)
 
 
 )
