@@ -124,22 +124,23 @@
         </executions>
       </plugin>
           
-    <!--
-    <dependency>
-      <groupId>io.dazraf</groupId>
-      <artifactId>vertx-hot-maven-plugin</artifactId>
-      <version>2.1.0</version>
-    </dependency>
-    -->
+      <!--
+	    <dependency>
+	      <groupId>io.dazraf</groupId>
+	      <artifactId>vertx-hot-maven-plugin</artifactId>
+	      <version>2.1.0</version>
+	    </dependency>
       <plugin>
         <groupId>io.dazraf</groupId>
         <artifactId>vertx-hot-maven-plugin</artifactId>
         <version>2.1.0</version>
         <configuration>
             <verticleReference>ir.onto.ontlas.Starter</verticleReference>
-            <!--<configFile>config filename</configFile>-->
+            <configFile>config.json</configFile>
+            <buildResources>false</buildResources>
         </configuration>
-    </plugin>
+      </plugin>
+      -->
     </plugins>
   </build>
 

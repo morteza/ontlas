@@ -14,6 +14,7 @@ public class WebApplicationVerticle extends AbstractVerticle {
     LOG.info("Starting web-verticle...");
     vertx.createHttpServer().requestHandler(request -> {
  
+      System.out.println("URII: " + request.uri());
       JsonObject message = new JsonObject()
           .put("ontology", "ontlas.owl")
           .put("queryString", request.query()); 
@@ -23,7 +24,8 @@ public class WebApplicationVerticle extends AbstractVerticle {
         JsonObject replyBody = (JsonObject) reply.result().body();
         LOG.info("Received message: " + replyBody);
         
-        request.response().end(replyBody.encodePrettily());
+        request.response().headers().set("Content-Type", "text/plain");
+        request.response().end(replyBody.encodePrettily(), "UTF-8");
       });
     }).listen(8080);
   }

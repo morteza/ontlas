@@ -2,5 +2,6 @@
   "main":"ir.onto.ontlas.AtlasVerticle",
   "description":"Ontlas Server",
   "author": "Morteza Ansarinia",
-  "homepage": "http://ontlas.onto.ir"
+  "homepage": "http://ontlas.onto.ir",
+  "http.port" : 8080
 }
