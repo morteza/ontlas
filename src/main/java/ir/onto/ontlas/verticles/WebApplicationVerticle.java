@@ -4,9 +4,10 @@ import io.vertx.core.AbstractVerticle;
 import io.vertx.core.json.JsonObject;
 import io.vertx.core.logging.Logger;
 import io.vertx.core.logging.LoggerFactory;
+import ir.onto.ontlas.verticles.semantic.OntologyInfoVerticle;
 
-public class WebVerticle extends AbstractVerticle {
-  private static final Logger LOG = LoggerFactory.getLogger(WebVerticle.class);
+public class WebApplicationVerticle extends AbstractVerticle {
+  private static final Logger LOG = LoggerFactory.getLogger(WebApplicationVerticle.class);
 
   @Override
   public void start() {
@@ -14,11 +15,11 @@ public class WebVerticle extends AbstractVerticle {
     vertx.createHttpServer().requestHandler(request -> {
  
       JsonObject message = new JsonObject()
-          .put("text", "hello from web-verticle.")
+          .put("ontology", "ontlas.owl")
           .put("queryString", request.query()); 
 
       LOG.info("Sending message: " + message);
-      vertx.eventBus().send(EchoServiceVerticle.ADDRESS, message, reply -> {
+      vertx.eventBus().send(OntologyInfoVerticle.ADDRESS, message, reply -> {
         JsonObject replyBody = (JsonObject) reply.result().body();
         LOG.info("Received message: " + replyBody);
         
