@@ -7,7 +7,7 @@
  *     Project: onto.cogatlas
  *   Copyright: See the file "LICENSE" for the full license governing this code.
  *******************************************************************************/
-package ir.onto.ontlas;
+package ir.onto.ontlas.verticles;
 
 import org.semanticweb.owlapi.model.OWLOntology;
 import org.semanticweb.owlapi.model.OWLOntologyCreationException;

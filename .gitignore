@@ -1,3 +1,4 @@
+.DS_Store
 .project
 .classpath
 .settings
@@ -10,3 +11,9 @@ release.properties
 dependency-reduced-pom.xml
 buildNumber.properties
 .mvn/timing.properties
+test-output
+Gemfile.lock
+.gradle
+/build/
+!gradle-wrapper.jar
+.gradletasknamecache

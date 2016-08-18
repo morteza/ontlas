@@ -7,7 +7,7 @@
  *     Project: onto.cogatlas
  *   Copyright: See the file "LICENSE" for the full license governing this code.
  *******************************************************************************/
-package ir.onto.ontlas;
+package ir.onto.ontlas.verticles;
 
 import io.vertx.core.AbstractVerticle;
 import io.vertx.core.Future;
@@ -33,10 +33,11 @@ public class AtlasVerticle extends AbstractVerticle {
     });
 
     // Serve the static resources
-    router.route().handler(StaticHandler.create());
+    router.route("/public/*").handler(StaticHandler.create("assets"));
 
-    vertx.createHttpServer().requestHandler(router::accept).listen(
-        config().getInteger("http.port", 8080));
+    vertx.createHttpServer()
+      .requestHandler(router::accept)
+      .listen(config().getInteger("http.port", 8080));
 
     /*vertx
         .createHttpServer()

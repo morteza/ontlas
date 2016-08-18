@@ -1,0 +1,6 @@
+{
+  "main":"ir.onto.ontlas.AtlasVerticle",
+  "description":"Ontlas Server",
+  "author": "Morteza Ansarinia",
+  "homepage": "http://ontlas.onto.ir"
+}
