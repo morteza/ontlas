@@ -73,11 +73,13 @@
       <artifactId>owlapi-api</artifactId>
       <version>5.0.2</version>
     </dependency>
+    
     <dependency>
     	<groupId>net.sourceforge.owlapi</groupId>
     	<artifactId>owlapi-apibinding</artifactId>
     	<version>5.0.2</version>
     </dependency>
+    
     <!-- https://mvnrepository.com/artifact/org.slf4j/slf4j-simple -->
 		<dependency>
 		  <groupId>org.slf4j</groupId>
@@ -121,16 +123,29 @@
           </execution>
         </executions>
       </plugin>
+          
+    <!--
+    <dependency>
+      <groupId>io.dazraf</groupId>
+      <artifactId>vertx-hot-maven-plugin</artifactId>
+      <version>2.1.0</version>
+    </dependency>
+    -->
       <plugin>
         <groupId>io.dazraf</groupId>
         <artifactId>vertx-hot-maven-plugin</artifactId>
         <version>2.1.0</version>
         <configuration>
-            <verticleReference>ir.onto.ontlas.AtlasVerticle</verticleReference>
+            <verticleReference>ir.onto.ontlas.OntlasStarter</verticleReference>
             <!--<configFile>config filename</configFile>-->
         </configuration>
     </plugin>
     </plugins>
   </build>
 
+  <description>Ontology-driven SKOS-based Atlas.</description>
+  <scm>
+  	<url>http://github.com/morteza/ontlas</url>
+  	<developerConnection>morteza</developerConnection>
+  </scm>
 </project>
