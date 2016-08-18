@@ -3,7 +3,7 @@
 Ontlas is an ontology-driven SKOS-based atlas.
 
 This project is however a proof-of-concept for a bigger knowledge engineering issue,
-and yet a playground so I can experiment and learn new technologies (mainly new OWL-API, Vert.x and React).
+and yet a playground so I can experience and learn some new technologies (mainly new OWL-API 5.x, Vert.x 3.x, and React).
 
 
 # Instruction
