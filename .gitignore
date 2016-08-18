@@ -17,3 +17,5 @@ Gemfile.lock
 /build/
 !gradle-wrapper.jar
 .gradletasknamecache
+/bin/
+gradle-app.setting
