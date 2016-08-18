@@ -1,3 +1,3 @@
 # Ontlas
 
-An ontology-driven atlas.
+An ontology-driven SKOS-based atlas.

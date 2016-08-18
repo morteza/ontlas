@@ -78,6 +78,12 @@
     	<artifactId>owlapi-apibinding</artifactId>
     	<version>5.0.2</version>
     </dependency>
+    <!-- https://mvnrepository.com/artifact/org.slf4j/slf4j-simple -->
+		<dependency>
+		  <groupId>org.slf4j</groupId>
+		  <artifactId>slf4j-simple</artifactId>
+		  <version>1.7.21</version>
+		</dependency>
   </dependencies>
 
   <build>
@@ -105,8 +111,7 @@
                 <transformer
                   implementation="org.apache.maven.plugins.shade.resource.ManifestResourceTransformer">
                   <manifestEntries>
-                    <Main-Class>io.vertx.core.Starter</Main-Class>
-                    <Main-Verticle>ir.onto.ontlas.AtlasVerticle</Main-Verticle>
+                    <Main-Class>ir.onto.ontlas.OntlasStarter</Main-Class>
                   </manifestEntries>
                 </transformer>
               </transformers>
