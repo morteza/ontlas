@@ -14,19 +14,15 @@ public class WebApplicationVerticle extends AbstractVerticle {
     LOG.info("Starting web-verticle...");
     vertx.createHttpServer().requestHandler(request -> {
  
-      System.out.println("URII: " + request.uri());
       JsonObject message = new JsonObject()
           .put("ontology", "ontlas.owl")
           .put("queryString", request.query()); 
 
-      LOG.info("Sending message: " + message);
       vertx.eventBus().send(OntologyInfoVerticle.ADDRESS, message, reply -> {
-        JsonObject replyBody = (JsonObject) reply.result().body();
-        LOG.info("Received message: " + replyBody);
-        
+        JsonObject replyBody = (JsonObject) reply.result().body();        
         request.response().headers().set("Content-Type", "text/plain");
         request.response().end(replyBody.encodePrettily(), "UTF-8");
       });
-    }).listen(8080);
+    }).listen(config().getInteger("http.port", 8080));
   }
 }

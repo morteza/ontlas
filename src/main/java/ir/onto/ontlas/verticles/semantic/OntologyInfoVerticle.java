@@ -26,6 +26,9 @@ public class OntologyInfoVerticle extends AbstractVerticle {
   public static final String ADDRESS = "ontology-info-service";
   private static final Logger LOG = LoggerFactory.getLogger(OntologyInfoVerticle.class);
   
+  private static OWLOntology ontology = null;
+  private static OWLOntologyManager ontologyManager = null;
+  
   public void start() {
     LOG.info("Starting OntologyInfo service...");
     vertx.eventBus().consumer(OntologyInfoVerticle.ADDRESS, message -> {
@@ -36,12 +39,14 @@ public class OntologyInfoVerticle extends AbstractVerticle {
       Integer numOfAxioms = null;
       
       try {
-        InputStream ontologyFile = getClass().getClassLoader().getResourceAsStream(ontologyFilePath);
-        OWLOntologyManager m = OWLManager.createOWLOntologyManager();
-        OWLOntology o = m.loadOntologyFromOntologyDocument(ontologyFile);
-        numOfAxioms = o.getAxiomCount();
+        if (ontology==null) {
+          ontologyManager = OWLManager.createOWLOntologyManager();
+          InputStream ontologyFile = getClass().getClassLoader().getResourceAsStream(ontologyFilePath);
+          ontology = ontologyManager.loadOntologyFromOntologyDocument(ontologyFile);          
+        }
+        numOfAxioms = ontology.getAxiomCount();
       } catch (Exception e) {
-        LOG.error("Error while getting ontology info.");
+        LOG.error("Error while loading ontology.");
         e.printStackTrace();
       }
       

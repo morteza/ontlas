@@ -13,14 +13,19 @@ Annotation(ontlas:author "Morteza Ansarinia")
 Annotation(ontlas:author "ansarinia@me.com"@en)
 Annotation(owl:versionInfo "0.0.1")
 
+Declaration(Class(ontlas:Battery))
 Declaration(Class(ontlas:Category))
+Declaration(Class(ontlas:Citation))
 Declaration(Class(ontlas:Collection))
-Declaration(Class(ontlas:Concept))
+Declaration(Class(ontlas:Condition))
 Declaration(Class(ontlas:Disorder))
 Declaration(Class(ontlas:Locator))
-Declaration(Class(ontlas:MainConcept))
+Declaration(Class(ontlas:MainCategory))
+Declaration(Class(ontlas:MentalConcept))
 Declaration(Class(ontlas:Task))
+Declaration(Class(ontlas:Theory))
 Declaration(ObjectProperty(ontlas:associatedWith))
+Declaration(ObjectProperty(ontlas:hasCitation))
 Declaration(ObjectProperty(ontlas:hasCondition))
 Declaration(ObjectProperty(ontlas:hasKind))
 Declaration(ObjectProperty(ontlas:hasPart))
@@ -28,6 +33,7 @@ Declaration(ObjectProperty(ontlas:isKindOf))
 Declaration(ObjectProperty(ontlas:isPartOf))
 Declaration(ObjectProperty(ontlas:measuredBy))
 Declaration(DataProperty(ontlas:hasExternalLink))
+Declaration(NamedIndividual(ontlas:action))
 Declaration(AnnotationProperty(<dcns:date>))
 Declaration(AnnotationProperty(ontlas:author))
 Declaration(AnnotationProperty(ontlas:authorEmail))
@@ -50,6 +56,14 @@ SubAnnotationPropertyOf(ontlas:authorEmail ontlas:author)
 # Object Property: ontlas:associatedWith (ontlas:associatedWith)
 
 ObjectPropertyDomain(ontlas:associatedWith ontlas:Task)
+
+# Object Property: ontlas:hasCitation (ontlas:hasCitation)
+
+AnnotationAssertion(<dcns:date> ontlas:hasCitation "1471600550538"^^xsd:long)
+AnnotationAssertion(<http://purl.org/dc/elements/1.1/creator> ontlas:hasCitation "morteza"^^xsd:string)
+ObjectPropertyDomain(ontlas:hasCitation owl:Thing)
+ObjectPropertyDomain(ontlas:hasCitation <http://www.w3.org/2004/02/skos/core#Concept>)
+ObjectPropertyRange(ontlas:hasCitation ontlas:Citation)
 
 # Object Property: ontlas:hasCondition (ontlas:hasCondition)
 
@@ -77,6 +91,7 @@ AnnotationAssertion(<http://purl.org/dc/elements/1.1/date> ontlas:measuredBy "14
 
 AnnotationAssertion(rdfs:label ontlas:hasExternalLink "External Link"@en)
 AnnotationAssertion(rdfs:label ontlas:hasExternalLink "اطلاعات بیشتر"@fa)
+DataPropertyDomain(ontlas:hasExternalLink owl:Thing)
 DataPropertyRange(ontlas:hasExternalLink xsd:string)
 
 
@@ -85,29 +100,65 @@ DataPropertyRange(ontlas:hasExternalLink xsd:string)
 #   Classes
 ############################
 
+# Class: ontlas:Battery (ontlas:Battery)
+
+AnnotationAssertion(<dcns:date> ontlas:Battery "1471600314800"^^xsd:long)
+AnnotationAssertion(<http://purl.org/dc/elements/1.1/creator> ontlas:Battery "morteza"^^xsd:string)
+
 # Class: ontlas:Category (ontlas:Category)
 
 EquivalentClasses(ontlas:Category <http://www.w3.org/2004/02/skos/core#ConceptScheme>)
+
+# Class: ontlas:Citation (ontlas:Citation)
+
+AnnotationAssertion(<dcns:date> ontlas:Citation "1471600324651"^^xsd:long)
+AnnotationAssertion(<http://purl.org/dc/elements/1.1/creator> ontlas:Citation "morteza"^^xsd:string)
 
 # Class: ontlas:Collection (ontlas:Collection)
 
 EquivalentClasses(ontlas:Collection <http://www.w3.org/2004/02/skos/core#Collection>)
 
-# Class: ontlas:Concept (ontlas:Concept)
+# Class: ontlas:Condition (ontlas:Condition)
 
-EquivalentClasses(ontlas:Concept <http://www.w3.org/2004/02/skos/core#Concept>)
+AnnotationAssertion(<dcns:date> ontlas:Condition "1471600333827"^^xsd:long)
+AnnotationAssertion(<http://purl.org/dc/elements/1.1/creator> ontlas:Condition "morteza"^^xsd:string)
 
 # Class: ontlas:Locator (ontlas:Locator)
 
 AnnotationAssertion(<http://purl.org/dc/elements/1.1/creator> ontlas:Locator "morteza"^^xsd:string)
 AnnotationAssertion(<http://purl.org/dc/elements/1.1/date> ontlas:Locator "1470594790949"^^xsd:long)
 AnnotationAssertion(<http://purl.org/dc/terms/description> ontlas:Locator "Resource locator including web address, files, images, and Ontlas internal addressing."@en)
+EquivalentClasses(ontlas:Locator ObjectSomeValuesFrom(ontlas:hasCitation ontlas:Citation))
 
-# Class: ontlas:MainConcept (ontlas:MainConcept)
+# Class: ontlas:MainCategory (ontlas:MainCategory)
 
-AnnotationAssertion(<dcns:date> ontlas:MainConcept "1471593230892"^^xsd:long)
-AnnotationAssertion(<http://purl.org/dc/elements/1.1/creator> ontlas:MainConcept "morteza"^^xsd:string)
-SubClassOf(ontlas:MainConcept ontlas:Concept)
+AnnotationAssertion(<dcns:date> ontlas:MainCategory "1471600465708"^^xsd:long)
+AnnotationAssertion(<http://purl.org/dc/elements/1.1/creator> ontlas:MainCategory "morteza"^^xsd:string)
+SubClassOf(ontlas:MainCategory <http://www.w3.org/2004/02/skos/core#ConceptScheme>)
+
+# Class: ontlas:MentalConcept (ontlas:MentalConcept)
+
+SubClassOf(ontlas:MentalConcept <http://www.w3.org/2004/02/skos/core#Concept>)
+
+# Class: ontlas:Theory (ontlas:Theory)
+
+AnnotationAssertion(<dcns:date> ontlas:Theory "1471600343591"^^xsd:long)
+AnnotationAssertion(<http://purl.org/dc/elements/1.1/creator> ontlas:Theory "morteza"^^xsd:string)
+
+
+############################
+#   Named Individuals
+############################
+
+# Individual: ontlas:action (کنش)
+
+AnnotationAssertion(<dcns:date> ontlas:action "1471600753952"^^xsd:long)
+AnnotationAssertion(<http://purl.org/dc/elements/1.1/creator> ontlas:action "morteza"^^xsd:string)
+AnnotationAssertion(rdfs:label ontlas:action "کنش"@fa)
+AnnotationAssertion(<http://www.w3.org/2004/02/skos/core#prefLabel> ontlas:action "کنش"@fa)
+ClassAssertion(ontlas:MentalConcept ontlas:action)
+DataPropertyAssertion(ontlas:hasExternalLink ontlas:action "http://www.cognitiveatlas.org/concept/action")
+DataPropertyAssertion(ontlas:hasExternalLink ontlas:action "http://www.merriam-webster.com/dictionary/action")
 
 
 )
