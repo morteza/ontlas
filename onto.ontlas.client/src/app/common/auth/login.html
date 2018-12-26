@@ -1,0 +1,75 @@
+<div layout="row">
+  <div flex ng-if="!$ctrl.showRegisterForm" layout="column" layout-align="center center" layout-fill>
+    <div class="md-whiteframe-z2" layout="column" style="width:500px;max-width:90%;">
+      <h2 flex layout="column" layout-align="center center"><span>ورود به دانش‌نامه</span></h2>
+
+      <form name="loginForm">
+        <md-content class="md-padding" layout="column">
+            <md-input-container>
+              <label>پست الکترونیکی</label>
+              <input type="email" class="ltr" ng-model="$ctrl.username"/>
+            </md-input-container>
+            <md-input-container>
+              <label>کلمهٔ عبور</label>
+              <input type="password" class="ltr" ng-model="$ctrl.password"/>
+            </md-input-container>
+            <div layout="row" layout-align="center center">
+              <md-button type="submit" class="md-raised md-primary" ng-click="$ctrl.login()">ورود</md-button>
+              <div flex="flex"></div>
+              <md-button href="" md-no-ink>فراموش کردید؟</md-button>
+            </div>
+        </md-content>
+      </form>
+    </div>
+    <p>حساب کاربری ندارید؟ <md-button ng-click="$ctrl.showRegisterForm=true" class="md-primary">ثبت‌نام کنید</md-button></p>
+  </div>
+
+  <div flex ng-if="$ctrl.showRegisterForm" layout="column" layout-align="center center" layout-fill>
+    <div class="md-whiteframe-z2" layout="column" style="width:500px;max-width:90%;">
+      <h2 flex layout="column" layout-align="center center"><span>ثبت‌نام در دانش‌نامه</span></h2>
+
+      <form name="signupForm">
+        <md-content class="md-padding" layout="column">
+            <div>
+              <md-input-container>
+                <label>نام</label>
+                <input type="name" class="" ng-model="$ctrl.name"/>
+              </md-input-container>
+              <md-input-container>
+                <label>نام خانوادگی</label>
+                <input type="familyName" class="" ng-model="$ctrl.familyName"/>
+              </md-input-container>
+            </div>
+            <div>
+              <md-input-container>
+                <label>پست الکترونیکی</label>
+                <input type="email" class="ltr" ng-model="$ctrl.username"/>
+              </md-input-container>
+              <md-input-container>
+                <label>تکرار پست‌الکترونیکی</label>
+                <input type="email" class="ltr" ng-model="$ctrl.username2"/>
+              </md-input-container>
+            </div>
+            <div>
+              <md-input-container>
+                <label>کلمهٔ عبور</label>
+                <input type="password" class="ltr" ng-model="$ctrl.password"/>
+              </md-input-container>
+              <md-input-container>
+                <label>تکرار کلمهٔ عبور</label>
+                <input type="password" class="ltr" ng-model="$ctrl.password2"/>
+              </md-input-container>
+
+            </div>
+            <div layout="row" layout-align="center center">
+              <md-button type="submit" class="md-raised md-primary" ng-click="$ctrl.signup()">ثبت‌نام</md-button>
+              <div flex="flex"></div>
+              <md-button class="md-primary" ng-click="$ctrl.showRegisterForm=false">ورود با حساب کاربری</md-button>
+            </div>
+        </md-content>
+      </form>
+
+    </div>
+
+  </div>
+</div>

@@ -1,0 +1,13 @@
+// Place your settings in this file to overwrite default and user settings.
+{
+  "rest-client.environmentVariables": {
+    "development": {
+      "api.server": "http://localhost:8080/api/v1",
+      "jwt.token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhbnNhcmluaWFAbWUuY29tIiwiaWF0IjoxNDkzODk3NjIzfQ==.ZGIWW3zwshARnTP0UM3l-zeDu1O7d-XXt5WbJ9GTDYw="
+    },
+    "production": {
+      "api.server": "http://localhost:8080/api/v1",
+      "jwt.token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhbnNhcmluaWFAbWUuY29tIiwiaWF0IjoxNDkzODk3NjIzfQ==.ZGIWW3zwshARnTP0UM3l-zeDu1O7d-XXt5WbJ9GTDYw="
+    }
+  }
+}

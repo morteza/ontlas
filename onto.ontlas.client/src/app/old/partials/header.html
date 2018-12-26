@@ -1,0 +1,39 @@
+<br />
+<div class="ui computer only grid">
+<div class="sixteen wide column">
+  <div class="ui fixed stackable menu">
+    <a class="icon item" ng-href="#!/dashboard"><i class="dashboard icon"></i></a>
+    <div class="ui dropdown item">
+      مدیریت
+      <i class="dropdown icon"></i>
+      <div class="menu">
+        <a ng-href="#!/" class="item">داشبورد مدیریت</a>
+        <a ng-href="#!/admin/ontologies" class="item">آنتولوژی</a>
+        <a ng-href="#!/admin/cms" class="item">محتوا</a>
+        <a ng-href="#!/admin/crawlers" class="item">خزنده‌های دانش</a>
+        <div class="item">نگاشت</div>
+        <div class="item">کاربران</div>
+        <div class="item">وضعیت</div>
+      </div>
+    </div>
+    <div class="ui scrolling dropdown item">
+      دانش
+      <i class="dropdown icon"></i>
+      <div class="wiki menu"></div>
+    </div>
+
+    <a ng-href="#!/admin/dlquery" class="item">پرس‌وجو</a>
+    <div class="ui category search right aligned item">
+      <div class="ui transparent icon input">
+        {{title}}
+        <input class="prompt" type="text" placeholder="جستجوی {{currentSearchLabel}}">
+        <i class="search link icon"></i>
+      </div>
+      <div class="results"></div>
+    </div>
+    <a class="ui icon item" href="#!/inbox" title="پیام‌ها"><i class="inbox icon"></i></a>
+    <a class="ui icon item" href="#!/logout" title="خروج"><i class="sign out icon"></i></a>
+  </div>
+  <div class="ui top-menu spacer"></div>
+</div>
+</div>

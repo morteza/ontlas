@@ -1,0 +1,92 @@
+<div class="ui header">
+  مدیریت خزنده‌ها
+  <a ng-click="new()" class="ui primary compact right floated button">جدید</a>
+  <a ng-click="submitCrawledData()" class="ui compact right floated button">ارسال دادهٔ دستی</a>
+</div>
+
+<div class="ui basic segment">
+  <div class="ui clearing hidden divider"></div>
+  <table class="ui table" ng-if="crawlers.length>0">
+    <tr ng-repeat="crawler in crawlers">
+      <td>{{ crawler.title }}</td>
+      <td>{{ crawler.modifiedAt }}</td>
+      <td>
+        <a ng-click="editParams(crawler._id)" class="ui right floated compact icon button">
+          <i class=" play icon"></i>
+        </a>
+        <a ng-click="remove(crawler._id)" class="ui right floated compact icon red button">حذف</a>
+      </td>
+    </tr>
+  </table>
+  <div class="ui error message" ng-if="!crawlers || crawlers.length==0">هیچ خزنده‌ای تعریف نشده است.</div>
+</div>
+
+<div class="ui small crawler modal" id="editModal">
+  <i class="close icon"></i>
+  <div class="header">
+    خزنده
+  </div>
+  <div class="content">
+    <form class="ui form" ng-submit="submit()" id="editForm" enctype='multipart/form-data'>
+      <input type="hidden" name="_id" ng-model="crawler._id" ng-if="crawler._id" ng-value="crawler._id" />
+
+      <div class="field">
+        <label>عنوان</label>
+        <input type="text" required name="title" ng-model="crawler.title" />
+      </div>
+      <div class="field">
+        <label for="">آدرس سرور خزنده</label>
+        <input type="text" class="ltr" name="crawlServer" ng-change="getListOfCrawlers(crawler.crawlServer)" ng-model="crawler.crawlServer" ng-value="crawler.crawlServer" required>
+      </div>
+
+      <div class="two fields">
+        <div class="field">
+          <label for="">پارامترها</label>
+          <input type="text" class="ltr" name="param" ng-model="crawler.param">
+        </div>
+
+        <div class="field">
+          <label>شناسهٔ خزنده</label>
+          <select  ng-if="crawlerIds" class="ui ltr dropdown" name="crawlerId" ng-model="crawler.crawlerId" ng-value="crawler.crawlerId" ng-options="cid for cid in crawlerIds">
+          </select>
+        </div>
+      </div>
+    </form>
+
+  </div>
+  <div class="actions">
+    <a class="ui compact left floated deny button">
+      لغو
+    </a>
+    <button type="submit" class="ui primary compact left labeled icon button" form="editForm">
+      ذخیره
+      <i class="checkmark icon"></i>
+    </button>
+  </div>
+</div>
+
+<div class="ui small params modal" id="paramsModal">
+  <i class="close icon"></i>
+  <div class="header">
+    اجرای خزنده
+  </div>
+  <div class="content">
+    <form class="ui form" ng-submit="submitParams()" id="paramsForm" enctype='multipart/form-data'>
+      <input type="hidden" name="_id" ng-model="crawler._id" ng-if="crawler._id" ng-value="crawler._id" />
+      <div class="field" ng-repeat="param in crawler.params">
+        <label>{{param}}</label>
+        <input type="text" name="{{param}}" value="" />
+      </div>
+    </form>
+  </div>
+
+  <div class="actions">
+    <a class="ui compact left floated deny button">
+      لغو
+    </a>
+    <button type="submit" class="ui positive compact left labeled icon button" form="paramsForm">
+      اجرا
+      <i class=" play icon"></i>
+    </button>
+  </div>
+</div>

@@ -1,0 +1,40 @@
+<md-toolbar class="md-table-toolbar md-default">
+  <div class="md-toolbar-tools">
+    <span>جستجو در دانش‌نامه</span>
+    <div flex></div>
+    <md-button class="md-icon-button" ui-sref="wiki/home">
+      <md-icon>arrow_back</md-icon>
+    </md-button>
+  </div>
+</md-toolbar>
+
+<md-content layout="column">
+  <span flex layout="row">
+    <md-input-container flex>
+      <label for="">عبارت جستجو</label>
+      <input ng-model="$ctrl.params.query"></input>
+    </md-input-container>
+    <md-button class="md-raised md-primary" ng-click="$ctrl.search()">جستجو</md-button>
+  </span>
+</md-content>
+
+
+<md-content layout="column" layout-wrap ng-if="$ctrl.results">
+  <md-progress-linear md-mode="indeterminate" ng-if="$ctrl.isLoading"></md-progress-linear>
+  <div ng-repeat="result in $ctrl.results.data">
+    <md-card flex>
+      <md-card-header>
+        <md-card-header-text class="md-title">
+          <a ui-sref="cms/edit({id:result.id})" ng-if="result.id">{{ result.title }}</a>
+          <a ui-sref="wiki({iri:result.iri})" ng-if="result.iri && !result.id">{{ result.title }}</a>
+        </md-card-header-text>
+      </md-card-header>
+      <md-card-content class="md-body-1" ng-if="result.description">
+        {{ result.description | limitToWords: 30}}
+      </md-card-content>
+      <md-card-content class="md-body-1" ng-if="result.content">
+        {{ result.content | limitToWords: 30}}
+      </md-card-content>
+    </md-card>
+  </div>
+</md-content>

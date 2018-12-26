@@ -1,0 +1,54 @@
+
+<div class="ui basic segment">
+  <a ng-click="new()" class="ui primary compact right floated button">آنتولوژی جدید</a>
+  <div class="ui clearing hidden divider"></div>
+  <table class="ui table" ng-if="ontologies.length>0">
+    <tr ng-repeat="ontology in ontologies">
+      <td>{{ ontology.title }}</td>
+      <td>{{ ontology.modifiedAt }}</td>
+      <td>
+        <a ng-click="activate(ontology._id.$oid)" class="ui right floated compact icon blue button"><i class="ui checkmark icon"></i></a>
+        <a ng-click="edit(ontology._id.$oid)" class="ui right floated compact icon black button"><i class="ui edit icon"></i></a>
+        <a ng-click="remove(ontology._id.$oid)" class="ui right floated compact icon red button"><i class="ui remove icon"></i></a>
+      </td>
+    </tr>
+  </table>
+  <div class="ui error message" ng-if="ontologies.length==0">چیزی موجود نیست.</div>
+
+</div>
+
+<div class="ui small modal" id="editModal">
+  <i class="close icon"></i>
+  <div class="header">
+    مدیریت هستان شناسی
+  </div>
+  <div class="content">
+    <form class="ui form" ng-submit="submit()" id="editForm" enctype='multipart/form-data'>
+      <input type="hidden" name="_id" ng-model="page._id.$oid" ng-if="ontology._id" ng-value="ontology._id.$oid" />
+      <div class="two fields">
+        <div class="field">
+          <label>عنوان</label>
+          <input type="text" required name="title" ng-model="ontology.title" />
+        </div>
+        <div class="field">
+          <label>فایل OWL</label>
+          <input type="file" required name="file" ng-model="ontology.file" />
+        </div>
+      </div>
+      <div class="field">
+        <label>توضیحات</label>
+        <textarea name="content" ng-model="ontology.content"></textarea>
+      </div>
+    </form>
+
+  </div>
+  <div class="actions">
+    <a class="ui deny button">
+      لغو
+    </a>
+    <button type="submit" class="ui primary right labeled icon button" form="editForm">
+      ذخیره
+      <i class="checkmark icon"></i>
+    </button>
+  </div>
+</div>

@@ -1,0 +1,29 @@
+<md-sidenav class="md-sidenav-left" md-component-id="help-sidenav" md-is-locked-open="$ctrl.ConfigService.showHelpSidenav">
+
+  <section layout="column">
+
+    <md-toolbar class="md-hue-4">
+      <div class="md-toolbar-tools" layout="row">
+        <h1>راهنما</h1>
+        <span flex></span>
+
+        <md-button aria-label="بستن راهنما" class="md-icon-button" title="بستن راهنما" ng-click="$ctrl.close()">
+          <md-icon>close</md-icon>
+        </md-button>
+      </div>
+    </md-toolbar>
+    <md-content layout="column">
+      <md-card ng-repeat="document in $ctrl.documents.data">
+        <md-card-header>
+          <md-card-header-text>
+            <span class="md-headline">{{document.title}}</span>
+          </md-card-header-text>
+        </md-card-header>
+        <md-card-content>
+          <p ng-bind-html="document.content"></p>
+        </md-card-content>
+      </md-card>
+    </md-content>
+  </section>
+
+</md-sidenav>

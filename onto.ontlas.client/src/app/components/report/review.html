@@ -1,0 +1,47 @@
+<md-toolbar class="md-table-toolbar md-default">
+  <div class="md-toolbar-tools">
+    <span>مدیریت محتوا</span>
+    <div flex></div>
+    <md-button class="md-icon-button" ng-click="$ctrl.getDocuments()">
+      <md-icon>refresh</md-icon>
+    </md-button>
+  </div>
+</md-toolbar>
+
+<md-table-container>
+  <table md-table multiple md-progress="$ctrl.promise">
+    <thead md-head md-order="$ctrl.query.order" md-on-reorder="$ctrl.getDocuments">
+      <tr md-row>
+        <th md-column md-order-by="title"><span>عنوان</span></th>
+        <th md-column md-order-by="iri">شناسهٔ یکتا</th>
+        <th md-column md-order-by="createdAt"><span>تاریخ</span></th>
+        <th md-column>نوع</th>
+        <th md-column></th>
+      </tr>
+    </thead>
+    <tbody md-body>
+      <tr md-row ng-repeat="document in $ctrl.documents.data | orderBy: $ctrl.query.order">
+        <td md-cell>
+          {{document.title}}
+        </td>
+        <td md-cell class="ltr">{{document.iri}}</td>
+        <td md-cell>{{document.createdAt | JalaliDate:"MMMM dd, yyyy" | date:"MMMM dd, yyyy"}}</td>
+        <td md-cell>
+          <md-select ng-model="$ctrl.document.type" placeholder="نوع سند">
+            <md-option ng-value="type" ng-repeat="type in $ctrl.getTypes()">{{type}}</md-option>
+          </md-select>
+        </td>
+        <td md-cell class="min" layout="row" layout-align="end end">
+          <md-button class="md-primary md-icon-button" ng-click="$ctrl.edit(document.id)" title="تصحیح سند">
+            <md-icon>edit</md-icon>
+          </md-button>
+          <md-button class="md-warn md-icon-button" ng-click="$ctrl.remove(document.id)" title="حذف سند">
+            <md-icon>clear</md-icon>
+          </md-button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</md-table-container>
+
+<md-table-pagination md-page-select md-label="{'of':'از','page':'صفحه:','rowsPerPage':'تعداد در هر صفحه:'}" md-limit="$ctrl.query.limit" md-limit-options="[10, 20, 45]" md-page="$ctrl.query.page" md-total="{{$ctrl.documents.total}}" md-on-paginate="$ctrl.onPaginate"></md-table-pagination>

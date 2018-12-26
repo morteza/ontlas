@@ -1,0 +1,65 @@
+<div class="ui header">
+  مدیریت محتوا
+  <a ng-click="new()" class="ui primary compact right floated button">جدید</a>
+</div>
+
+<div class="ui basic segment">
+  <div class="ui clearing hidden divider"></div>
+  <table class="ui table" ng-if="posts.length>0">
+    <tr ng-repeat="post in posts">
+      <td>{{ post.title }}</td>
+      <td>{{ post.modifiedAt }}</td>
+      <td>
+        <a ng-click="edit(post._id)" class="ui right floated compact icon button">تغییر</a>
+        <a ng-click="remove(post._id)" class="ui right floated compact icon red button">حذف</a>
+      </td>
+    </tr>
+  </table>
+  <div class="ui error message" ng-if="!posts || posts.length==0">چیزی موجود نیست.</div>
+</div>
+
+<div class="ui small modal" id="editModal">
+  <i class="close icon"></i>
+  <div class="header">
+    مدیریت محتوا
+  </div>
+  <div class="content">
+    <form class="ui form" ng-submit="submit()" id="editForm" enctype='multipart/form-data'>
+      <input type="hidden" name="_id" ng-model="post._id" ng-if="post._id" ng-value="post._id" />
+      <div class="two fields">
+        <div class="field">
+          <label>عنوان</label>
+          <input type="text" required name="title" ng-model="post.title" />
+        </div>
+        <div class="field">
+          <label>نوع محتوا</label>
+          <select class="ui dropdown" name="type" ng-model="post.type" ng-value="post.type" required>
+            <option value="0">پشتیبانی</option>
+            <option value="1">راهنمای داخلی</option>
+            <option value="2">پُست بلاگ</option>
+            <option value="3">محتوای مکملِ دانش</option>
+            <option value="4">صفحهٔ ثابت</option>
+          </select>
+        </div>
+      </div>
+      <div class="field">
+        <label>شناسه IRI</label>
+        <input type="text" class="ltr" name="iri" ng-model="post.iri" />
+      </div>
+      <div class="field">
+        <label>محتوا</label>
+        <textarea name="content" ng-model="post.content"></textarea>
+      </div>
+    </form>
+
+  </div>
+  <div class="actions">
+    <a class="ui compact left floated deny button">
+      لغو
+    </a>
+    <button type="submit" class="ui primary compact left labeled icon button" form="editForm">
+      ذخیره
+      <i class="checkmark icon"></i>
+    </button>
+  </div>
+</div>

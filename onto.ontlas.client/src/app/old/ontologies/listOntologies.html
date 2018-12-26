@@ -1,0 +1,25 @@
+<h1 class="ui dividing header">
+  مدیریت آنتولوژی‌ها
+  <a href="#!/admin/ontologies/upload" class="ui primary compact right floated button">ارسال آنتولوژی جدید</a>
+  <a href="#!/admin/ontologies/active" class="ui compact right floated button">جزییات آنتولوژی فعال</a>
+</h1>
+<div class="ui basic segment">
+  <div class="ui clearing hidden divider"></div>
+  <table class="ui table" ng-if="ontologies.length>0">
+    <tr ng-repeat="ontology in ontologies">
+      <td>
+        <span ng-if="ontology.active==='true'"><i class="ui green circle icon"></i></span>
+        <span ng-if="ontology.active==='false'"><i class="ui red circle icon"></i></span>
+        {{ ontology.title }}</td>
+      <td>{{ ontology.iri }}</td>
+      <td>
+        <a ng-click="edit(ontology._id)" class="ui right floated compact icon disabled button">تغییر</a>
+        <a ng-click="remove(ontology._id)" class="ui right floated compact icon red button">حذف</a>
+        <a ng-click="activate(ontology._id)" ng-if="ontology.active==='false'" class="ui right floated compact icon button">فعال شود</a>
+        <a ng-click="deactivate(ontology._id)" ng-if="ontology.active==='true'" class="ui right floated compact icon button">غیرفعال شود</a>
+      </td>
+    </tr>
+  </table>
+  <div class="ui error message" ng-if="!ontologies || ontologies.length==0">چیزی موجود نیست.</div>
+
+</div>

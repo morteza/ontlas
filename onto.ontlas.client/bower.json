@@ -1,0 +1,15 @@
+{
+  "name": "itrc.cskb.client",
+  "version": "0.2.0",
+  "main": "index.html",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "lib"
+  ],
+  "dependencies": {
+    "jquery": "latest",
+    "semantic-ui": "latest",
+    "jquery-serialize-object": "^2.5.0"
+  }
+}

@@ -1,0 +1,61 @@
+<md-toolbar class="md-table-toolbar md-default">
+  <div class="md-toolbar-tools">
+    <span>مدیریت محتوا</span>
+    <div flex></div>
+    <md-button class="md-icon-button" ui-sref="cms">
+      <md-icon>arrow_back</md-icon>
+    </md-button>
+  </div>
+</md-toolbar>
+
+<md-content layout-padding>
+  <div layout="column">
+    <h1 flex>مدیریت محتوا</h1>
+    <form name="form" flex>
+      <input type="hidden" ng-model="$ctrl.payload.id" ng-if="$ctrl.payloadId">
+      <div layout="row">
+        <md-input-container flex>
+          <label>عنوان</label>
+          <input ng-model="$ctrl.payload.title" required>
+        </md-input-container>
+      </div>
+      <div layout="row" flex>
+        <md-input-container flex>
+          <label>شناسه</label>
+          <input type="text" class="ltr" ng-model="$ctrl.payload.iri" required>
+        </md-input-container>
+        <md-input-container flex>
+          <label>نوع سند</label>
+          <md-select ng-model="$ctrl.payload.type" required>
+            <md-option ng-value="type.value" ng-repeat="type in $ctrl.types">{{ type.title }}</md-option>
+          </md-select>
+        </md-input-container>
+      </div>
+      <md-input-container flex layout="column" ng-if="!$ctrl.ConfigService.enableMarkdown">
+        <label>محتوای متنی</label>
+        <br />
+        <ng-wig ng-model="$ctrl.payload.content" class="md-block" flex></ng-wig>
+      </md-input-container>
+      <div flex layout="row" ng-if="$ctrl.ConfigService.enableMarkdown">
+        <md-input-container flex>
+          <label>محتوای متنی</label>
+          <textarea rows="5" ng-model="$ctrl.payload.content" class="md-block" flex></textarea>
+          <div class="hint">می‌توانید از روش Markdown‌ نیز استفاده نمایید.</div>
+        </md-input-container>
+        <div flex>
+          <h4>پیش‌نمایش</h4>
+          <div ng-bind-html="$ctrl.contentHtml"></div>
+        </div>
+      </div>
+
+    </form>
+    <div flex layout="row" layout-align="end center">
+      <md-button class="md-raised" ng-click="$ctrl.cancel()">
+        بازگشت
+      </md-button>
+      <md-button class="md-primary md-raised" ng-click="$ctrl.submit()">
+        ارسال
+      </md-button>
+    </div>
+  </div>
+</md-content>

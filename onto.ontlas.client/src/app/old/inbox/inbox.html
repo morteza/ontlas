@@ -1,0 +1,55 @@
+<div class="ui header">
+  پیام‌ها
+  <a ng-click="new()" class="ui primary compact right floated button">ارسال پیام</a>
+</div>
+
+<div class="ui basic segment">
+  <div class="ui clearing hidden divider"></div>
+  <table class="ui table" ng-if="messages.length>0">
+    <tr ng-repeat="message in messages">
+      <td style="width:1%" nowrap>{{ message.postedAt }}</td>
+      <td><a href ng-click="show(message._id)">{{ message.title }}</a></td>
+      <td>
+        <a ng-click="remove(message._id)" class="ui right floated compact icon red button">حذف</a>
+      </td>
+    </tr>
+  </table>
+  <div class="ui error message" ng-if="messages.length==0">چیزی موجود نیست.</div>
+
+</div>
+
+<div class="ui small modal" id="newMessageModal">
+  <i class="close icon"></i>
+  <div class="header">
+    ارسال پیام
+  </div>
+  <div class="content">
+    <form class="ui form" ng-submit="submit()" id="newMessageForm" enctype='multipart/form-data'>
+
+      <div class="field">
+        <label>پست الکترونیکی گیرنده</label>
+        <input type="text" class="ltr" required name="to" ng-model="message.to" />
+      </div>
+
+      <div class="field">
+        <label>عنوان</label>
+        <input type="text" required name="title" ng-model="message.title" />
+      </div>
+
+      <div class="field">
+        <label>متن پیام</label>
+        <textarea name="content" ng-model="message.content"></textarea>
+      </div>
+    </form>
+
+  </div>
+  <div class="actions">
+    <a class="ui compact left floated deny button">
+      لغو
+    </a>
+    <button type="submit" class="ui primary compact left labeled icon button" form="newMessageForm">
+      ارسال
+      <i class="send icon"></i>
+    </button>
+  </div>
+</div>

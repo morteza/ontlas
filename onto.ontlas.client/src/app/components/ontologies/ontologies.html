@@ -1,0 +1,41 @@
+<md-toolbar class="md-table-toolbar md-default">
+  <div class="md-toolbar-tools">
+    <span>مدیریت آنتولوژی‌ها</span>
+    <div flex></div>
+    <md-button class="md-icon-button" ng-click="$ctrl.getDatasets()">
+      <md-icon>refresh</md-icon>
+    </md-button>
+  </div>
+</md-toolbar>
+
+<md-table-container>
+  <table md-table multiple md-progress="$ctrl.promise">
+    <thead md-head md-order="$ctrl.query.order" md-on-reorder="$ctrl.getDatasets">
+      <tr md-row>
+        <th md-column md-order-by="title"><span>عنوان هستان‌شناسی</span></th>
+        <th md-column md-order-by="iri">شناسهٔ یکتا</th>
+        <th md-column md-order-by="createdAt"><span>تاریخ</span></th>
+        <th md-column></th>
+      </tr>
+    </thead>
+    <tbody md-body>
+      <tr md-row ng-repeat="dataset in $ctrl.datasets.data | orderBy: $ctrl.query.order">
+        <td md-cell>
+          {{dataset.title}}
+        </td>
+        <td md-cell class="ltr">{{dataset.iri}}</td>
+        <td md-cell>{{dataset.createdAt | JalaliDate:"MMMM dd, yyyy" | date:"MMMM dd, yyyy"}}</td>
+        <td md-cell class="min" layout="row" layout-align="end end">
+          <md-button class="md-primary md-icon-button" ng-click="$ctrl.edit(dataset.id)" title="تصحیح سند">
+            <md-icon>edit</md-icon>
+          </md-button>
+          <md-button class="md-warn md-icon-button" ng-click="$ctrl.remove(dataset.id)" title="حذف سند">
+            <md-icon>clear</md-icon>
+          </md-button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</md-table-container>
+
+<md-table-pagination md-page-select md-label="{'of':'از','page':'صفحه:','rowsPerPage':'تعداد در هر صفحه:'}" md-limit="$ctrl.query.limit" md-limit-options="[10, 20, 45]" md-page="$ctrl.query.page" md-total="{{$ctrl.datasets.total}}" md-on-paginate="$ctrl.onPaginate"></md-table-pagination>

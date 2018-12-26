@@ -1,0 +1,29 @@
+<div class="ui grid">
+  <div class="ten wide column">
+    <div class="ui header">پرس‌وجوی DL</div>
+    <div class="ui basic segment">
+      <form class="ui form">
+        <div class="field">
+          <textarea class="ltr" ng-model="dl.query"></textarea>
+        </div>
+        <div class="field">
+          <a ng-click="submit(dl)" class="ui right floated primary button">
+            پرس‌وجو
+          </a>
+        </div>
+      </form>
+    </div>
+  </div>
+  <div class="six wide column" ng-if="results">
+    <div class="ui header">نتایج</div>
+    <div class="ui basic ltr segment" direction="ltr" style="direction:ltr">
+      <table class="ui right aligned basic table">
+        <tbody>
+          <tr ng-repeat="result in results">
+            <td><a ng-href="#!/wiki/{{result}}">{{result}}</a></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

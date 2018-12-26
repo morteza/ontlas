@@ -1,0 +1,61 @@
+<md-toolbar class="md-hue-2" ng-show="!$ctrl.showSearch" ng-cloak ng-if="!$ctrl.$state.includes('login')">
+
+  <div class="md-toolbar-tools">
+    <a ui-sref="dashboard">دانش‌نامهٔ امنیت سایبری</a>
+    <span flex></span>
+
+    <md-button aria-label="جستجو" class="md-icon-button" title="جستجو" ng-click="$ctrl.showSearch = !$ctrl.showSearch">
+      <md-icon class="md-flip">search</md-icon>
+    </md-button>
+
+    <md-button ng-if="$ctrl.AuthService.isAuthenticated()" ui-sref="inbox" aria-label="پیام‌ها" class="md-icon-button" title="پیام‌ها">
+      <md-icon class="md-flip">inbox</md-icon>
+    </md-button>
+
+    <md-button ng-if="!$ctrl.AuthService.isAuthenticated()" ui-sref="login" aria-label="ورود" class="md-icon-button" title="ورود">
+      <md-icon class="md-flip">exit_to_app</md-icon>
+    </md-button>
+
+    <!--
+    <md-button ng-if="!$ctrl.AuthService.isAuthenticated()" ng-click="$ctrl.showSignupModal($event)" aria-label="ثبت‌نام" class="md-icon-button" title="ثبت‌نام">
+      <md-icon class="md-flip">person_add</md-icon>
+    </md-button>
+    -->
+
+    <md-button aria-label="راهنما" ng-disabled="$ctrl.ConfigService.showHelpSidenav" class="md-icon-button" title="راهنما" ng-click="$ctrl.showHelpSidenav()">
+      <md-icon>help</md-icon>
+    </md-button>
+
+    <md-button ng-if="$ctrl.AuthService.isAuthenticated()" aria-label="خروج" class="md-icon-button" title="خروج" ng-click="$ctrl.logout()">
+      <md-icon class="md-flip">power_settings_new</md-icon>
+    </md-button>
+
+  </div>
+
+</md-toolbar>
+
+<md-toolbar md-colors="{background:'grey'}" ng-show="$ctrl.showSearch" ng-cloak>
+  <div class="md-toolbar-tools" layout="row" layout-align="center center">
+    <md-button class="md-icon-button" ng-click="$ctrl.showSearch = !$ctrl.showSearch" aria-label="بازگشت">
+      <md-icon>close</md-icon>
+    </md-button>
+    <md-input-container flex md-no-float class="md-block md-primary toolbar-search-input">
+      <input type="text" ng-model="$ctrl.searchQuery" placeholder="عبارت جستجو">
+    </md-input-container>
+    <md-button class="" aria-label="جستجو" ui-sref="search({query:$ctrl.searchQuery})" ng-click="$ctrl.showSearch = !$ctrl.showSearch">
+      جستجو
+    </md-button>
+  </div>
+</md-toolbar>
+
+<div style="visibility: hidden">
+  <div class="md-dialog-container" id="signupModal">
+    <md-dialog layout-padding>
+      <h2>ثبت‌نام</h2>
+      <p>
+        Hello Signup!
+      </p>
+    </md-dialog>
+  </div>
+</div>
+

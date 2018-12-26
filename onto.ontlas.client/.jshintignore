@@ -1,0 +1,6 @@
+build/
+dist/
+lib/
+src/assets/js/*.min.js
+src/assets/js/semantic.js
+src/app/auth/auth.validations.js

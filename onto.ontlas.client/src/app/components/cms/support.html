@@ -1,0 +1,24 @@
+<md-toolbar class="md-table-toolbar md-default">
+  <div class="md-toolbar-tools">
+    <span>پشتیبانی</span>
+    <div flex></div>
+    <md-button class="md-icon-button" ng-click="$ctrl.refresh()">
+      <md-icon>refresh</md-icon>
+    </md-button>
+  </div>
+</md-toolbar>
+
+<md-content layout="column" layout-wrap>
+  <div ng-repeat="document in $ctrl.documents.data">
+    <md-card flex="33">
+      <md-card-header>
+        <md-card-header-text class="md-title">
+          <a ui-sref="cms/edit({id:document.id})">{{ document.title }}</a>
+        </md-card-header-text>
+      </md-card-header>
+      <md-card-content class="md-body-1">
+        {{ document.content | limitToWords: 30}}
+      </md-card-content>
+    </md-card>
+  </div>
+</md-content>

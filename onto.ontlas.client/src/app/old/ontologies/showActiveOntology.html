@@ -1,0 +1,35 @@
+<h1 class="ui clearing dividing header">
+  آنتولوژی فعال
+  <a href="#!/admin/ontologies" class="ui compact right floated button">بازگشت</a>
+</h1>
+<div class="ui basic segment">
+  <div class="ui clearing hidden divider"></div>
+  <table class="ui definition table" ng-if="ontology">
+    <tr>
+      <td style="width:1%">عنوان</td>
+      <td>
+        <span ng-if="ontology.active"><i class="ui green circle icon"></i></span>
+        <span ng-if="!ontology.active"><i class="ui red circle icon"></i></span>
+        {{ ontology.title }} (نسخه {{ ontology.version }})
+      </td>
+    </tr>
+    <tr>
+      <td nowrap>شناسه IRI</td>
+      <td>{{ ontology.iri }}</td>
+    </tr>
+    <tr>
+      <td nowrap>توضیحات</td>
+      <td>{{ ontology.description }}</td>
+    </tr>
+    <tr>
+      <td nowrap>توسعه‌دهنده</td>
+      <td><a href="mailto:{{ontology.authorEmail}}">{{ ontology.author }}</a></td>
+    </tr>
+    <tr>
+      <td nowrap>مسئول پشتیبانی</td>
+      <td><a href="mailto:{{ontology.maintainerEmail}}">{{ ontology.maintainer }}</a></td>
+    </tr>
+  </table>
+  <div class="ui error message" ng-if="!ontology">آنتولوژی فعالی یافت نشد.</div>
+
+</div>

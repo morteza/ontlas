@@ -1,0 +1,138 @@
+<!--
+  <md-toolbar class="md-primary">
+    <div class="md-toolbar-tools">
+      <span>داشبورد</span>
+    </div>
+  </md-toolbar>
+-->
+<div layout="row" layout-fill>
+
+  <div layout="column" flex="33">
+       <md-card>
+          <md-card-title>
+            <md-card-title-text>
+              <span class="md-headline">آنتولوژی‌ها</span>
+            </md-card-title-text>
+            <md-menu>
+              <md-button ng-click="$mdMenu.open($event)" class="md-icon-button" aria-label="Ontology Actions">
+                <md-icon>more_vert</md-icon>
+              </md-button>
+              <md-menu-content>
+                <md-menu-item>
+                  <md-button aria-label="New User" ui-sref="ontologies/edit({id:''})">
+                    <md-icon>add</md-icon> آنتولوژی جدید
+                  </md-button>
+                </md-menu-item>
+                                <md-divider></md-divider>
+
+                <md-menu-item>
+                  <md-button aria-label="Manage Accounts" ui-sref="cms">
+                    <md-icon>format_list_bulleted</md-icon> مدیریت آنتولوژی‌ها
+                  </md-button>
+                </md-menu-item>
+                <md-menu-item>
+                  <md-button aria-label="Manage Support" ui-sref="support">
+                    <md-icon>help_outline</md-icon> آنتولوژی‌های فعال
+                  </md-button>
+                </md-menu-item>
+
+              </md-menu-content>
+            </md-menu>
+          </md-card-title>
+          <md-card-content>
+
+          </md-card-content>
+          <md-card-actions layout="row" layout-align="end center">
+            <md-button>Action 1</md-button>
+            <md-button>Action 2</md-button>
+          </md-card-actions>
+        </md-card>
+       <md-card>
+          <md-card-title>
+            <md-card-title-text>
+              <span class="md-headline">کاربران</span>
+            </md-card-title-text>
+            <md-menu>
+              <md-button ng-click="$mdMenu.open($event)" class="md-icon-button" aria-label="Actions">
+                <md-icon>more_vert</md-icon>
+              </md-button>
+              <md-menu-content>
+                <md-menu-item>
+                  <md-button aria-label="New User" ui-sref="accounts/edit({id:''})">
+                    <md-icon>add</md-icon> کاربر جدید
+                  </md-button>
+                </md-menu-item>
+                                <md-divider></md-divider>
+
+                <md-menu-item>
+                  <md-button aria-label="Manage Accounts" ui-sref="cms">
+                    <md-icon>format_list_bulleted</md-icon> مدیریت کاربران
+                  </md-button>
+                </md-menu-item>
+                <md-menu-item>
+                  <md-button aria-label="Manage Support" ui-sref="support">
+                    <md-icon>help_outline</md-icon> مدیریت گروه‌های کاربری
+                  </md-button>
+                </md-menu-item>
+
+              </md-menu-content>
+            </md-menu>
+          </md-card-title>
+          <md-card-content>
+            <md-list>
+              <md-list-item class="md-2-line" ng-repeat="account in $ctrl.accounts">
+                <md-icon class="md-primary md-avatar-icon" hide-sm>face</md-icon>
+                <div class="md-list-item-text" layout="column">
+                  <h3>{{account.name}}</h3>
+                  <p>{{account.email}}</p>
+                </div>
+              <md-divider ng-if="!$last"></md-divider>
+              </md-list-item>
+            </md-list>
+          </md-card-content>
+        </md-card>
+  </div>
+
+  <div layout="column" flex="33">
+       <md-card>
+          <md-card-title>
+            <md-card-title-text>
+              <span class="md-headline">مدیریت دانش</span>
+            </md-card-title-text>
+            <md-menu>
+              <md-button ng-click="$mdMenu.open($event)" class="md-icon-button" aria-label="Actions">
+                <md-icon>more_vert</md-icon>
+              </md-button>
+              <md-menu-content>
+                <md-menu-item>
+                  <md-button aria-label="Add Content" ui-sref="cms/edit({id:''})">
+                    <md-icon>add</md-icon> محتوای جدید
+                  </md-button>
+                </md-menu-item>
+
+                <md-divider></md-divider>
+
+                <md-menu-item>
+                  <md-button aria-label="Manage Contents" ui-sref="cms">
+                    <md-icon>format_list_bulleted</md-icon> مدیریت محتوا
+                  </md-button>
+                </md-menu-item>
+                <md-menu-item>
+                  <md-button aria-label="Manage Support" ui-sref="support">
+                    <md-icon>help_outline</md-icon> پشتیبانی
+                  </md-button>
+                </md-menu-item>
+
+              </md-menu-content>
+            </md-menu>
+          </md-card-title>
+          <md-card-content>
+            <canvas id="base" class="chart chart-doughnut"
+              chart-data="$ctrl.conceptsData"
+              chart-labels="$ctrl.conceptsSeries"
+              chart-colors="$ctrl.colors">
+            </canvas>
+          </md-card-content>
+        </md-card>
+  </div>
+</div>

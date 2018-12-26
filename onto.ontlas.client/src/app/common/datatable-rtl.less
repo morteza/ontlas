@@ -1,0 +1,131 @@
+[dir=rtl] table.md-table {
+
+  th.md-column {
+    md-icon {
+      &:not(:first-child) {
+        margin-left: 0px;
+        margin-right: 8px;
+      }
+
+
+      &:not(:last-child) {
+        margin-right: 0px;
+        margin-left: 8px;
+      }
+    }
+  }
+
+
+
+  &.md-row-select td.md-cell,
+  &.md-row-select th.md-column {
+    &:first-child {
+      padding: 0 24px 0 0;
+    }
+
+    &:nth-child(n+3):nth-last-child(n+2) {
+       padding: 0 0 0 24px;
+    }
+  }
+
+  &:not(.md-row-select) td.md-cell,
+  &:not(.md-row-select) th.md-column {
+    &:nth-child(n+2):nth-last-child(n+2) {
+      padding: 0 24px 0 0;
+    }
+  }
+
+  td.md-cell,
+  th.md-column {
+    text-align: right;
+    &:last-child {
+      padding: 0 0 0 24px;
+    }
+
+    &.md-numeric {
+      text-align: left;
+    }
+
+  }
+
+
+  td.md-cell {
+    md-select > .md-select-value > span.md-select-icon {
+      text-align: left;
+    }
+  }
+}
+
+[dir=rtl] md-edit-dialog {
+  > .md-content {
+    md-input-container {
+      .md-errors-spacer {
+        .md-char-counter {
+          padding: 5px 0 5px 2px;
+        }
+      }
+
+      [ng-message] {
+        padding: 5px 2px 5px 0;
+      }
+    }
+  }
+
+  > .md-actions {
+    .md-button {
+      & + .md-button {
+        margin-right: 8px;
+        margin-left: 0;
+      }
+    }
+  }
+}
+
+[dir=rtl] .md-table-pagination {
+  md-select {
+    .md-select-value {
+      span.md-select-icon {
+        margin-right: 0 !important;
+        margin-left: -6px !important;
+      }
+    }
+  }
+
+  > .buttons:not(:first-child),
+  > .limit-select:not(:first-child) {
+    margin-left: 0;
+    margin-right: 32px;
+  }
+
+  > .buttons {
+    margin-right: 0;
+    margin-left: -16px;
+     > .md-button.md-icon-button {
+        transform: rotateY(180deg);
+    }
+    > .label + .md-button.md-icon-button {
+      margin-left: 0;
+      margin-right: 20px;
+    }
+  }
+}
+
+[dir=rtl] .md-select-menu-container.md-table-select,
+.md-select-menu-container.md-pagination-select {
+  margin-left: 0;
+  margin-right: -2px;
+}
+
+[dir=rtl] md-toolbar.md-table-toolbar {
+
+  .md-toolbar-tools {
+    > .md-button.md-icon-button:first-child {
+      margin-left: 0;
+      margin-right: -12px;
+    }
+    > .md-button.md-icon-button:last-child {
+      margin-right: 0;
+      margin-left: -12px;
+    }
+  }
+}

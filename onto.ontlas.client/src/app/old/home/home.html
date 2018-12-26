@@ -1,0 +1,9 @@
+میکروسرویس‌ها:
+<div class="ui basic segment">
+  <span ng-repeat="service in services">
+    <i class="ui red circle icon" ng-show="service.status=='off'"></i>
+    <i class="ui yellow circle icon" ng-show="service.status=='warning'"></i>
+    <i class="ui green circle icon" ng-show="service.status=='on'"></i>
+     {{ service.title }} <br />
+  </span>
+</div>

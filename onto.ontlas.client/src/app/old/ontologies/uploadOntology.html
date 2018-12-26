@@ -1,0 +1,74 @@
+<h1 class="ui dividing header">
+  ارسال آنتولوژی جدید
+  <a href="#!/admin/ontologies/" class="ui compact right floated button">بازگشت</a>
+</h1>
+<div class="ui form">
+
+  <div class="three fields">
+    <div class="field">
+      <label for="">عنوان</label>
+      <input type="text" ng-model="payload.title" ng-value="" required />
+    </div>
+    <div class="field">
+      <label for="">شناسه اختصاصی</label>
+      <input class="ltr" type="text" ng-model="payload.namespace" ng-value="" required />
+    </div>
+    <div class="field">
+      <label for="">نسخه</label>
+      <input class="ltr" type="text" ng-model="payload.version" ng-value="" />
+    </div>
+  </div>
+  <div class="field">
+    <label>توضیحات</label>
+    <textarea ng-model="payload.description" required></textarea>
+  </div>
+  <div class="two fields">
+    <div class="field">
+      <label for="organization">نام سازمان</label>
+      <input type="text" ng-model="payload.organization" />
+    </div>
+    <div class="field">
+      <label for="license">مجوز دسترسی</label>
+      <select class="ui dropdown" name="license" ng-model="payload.license" required>
+        <option ng-repeat="lcs in licenses" value="{{lcs.value}}">{{lcs.title}}</option>
+      </select>
+    </div>
+  </div>
+  <div class="two fields">
+    <div class="field">
+      <label for="organization">نام توسعه‌دهنده</label>
+      <input type="text" ng-model="payload.author" />
+    </div>
+    <div class="field">
+      <label for="authorEmail">پست‌الکترونیکی توسعه‌دهنده</label>
+      <input type="text" class="ltr" ng-model="payload.authorEmail" />
+    </div>
+  </div>
+  <div class="two fields">
+    <div class="field">
+      <label for="organization">نام مسئول پشتیبانی</label>
+      <input type="text" ng-model="payload.maintainer" />
+    </div>
+    <div class="field">
+      <label for="authorEmail">پست‌الکترونیکی مسئول پشتیبانی</label>
+      <input type="text" class="ltr" ng-model="payload.maintainerEmail" />
+    </div>
+  </div>
+  <div class="two fields">
+    <div class="field">
+      <label>فایل آنتولوژی</label>
+      <input type="file" ng-model="payload.owlFile" required />
+    </div>
+
+  </div>
+  <div class="field">
+    <div class="ui active checkbox">
+      <input type="checkbox" ng-model="payload.active" ng-value="false" tabindex="0" class="hidden">
+      <label>آنتولوژی بعد از ارسال به عنوان آنتولوژی فعال تعیین شود.</label>
+    </div>
+  </div>
+  <div class="field">
+    <a href="#!/admin/ontologies" class="ui left floated button">بازگشت</a>
+    <button type="submit" ng-click="uploadForm()" class="ui right floated primary button">ارسال</button>
+  </div>
+</div>

@@ -1,0 +1,81 @@
+<md-content layout-padding>
+  <div layout="column">
+    <h1 flex>تغییر آنتولوژی</h1>
+    <form name="form" flex>
+      <input type="hidden" ng-model="$ctrl.payload.id" ng-if="$ctrl.payloadId">
+      <div layout="row">
+        <md-input-container flex>
+          <label>عنوان</label>
+          <input ng-model="$ctrl.payload.title" required>
+        </md-input-container>
+        <md-input-container flex>
+          <label>شناسه</label>
+          <input class="ltr" ng-model="$ctrl.payload.iri" required>
+        </md-input-container>
+        <md-input-container flex>
+          <label>شناسهٔ نسخه</label>
+          <input class="ltr" ng-model="$ctrl.payload.versionIri">
+        </md-input-container>
+      </div>
+      <div layout="row" flex>
+        <md-input-container flex layout="column">
+          <label>توضیحات</label>
+          <br />
+          <ng-wig ng-model="$ctrl.payload.description" class="md-block" flex>
+          </ng-wig>
+        </md-input-container>
+      </div>
+      <div layout="row" flex>
+        <md-input-container flex>
+          <label>نام سازمان</label>
+          <input ng-model="$ctrl.payload.organization">
+        </md-input-container>
+        <md-input-container flex>
+          <label>مجوز دسترسی</label>
+          <md-select ng-model="$ctrl.payload.license">
+            <md-option ng-repeat="lcs in $ctrl.licenses" ng-value="lcs.value">
+              {{lcs.title}}
+            </md-option>
+          </md-select>
+        </md-input-container>
+      </div>
+      <div layout="row" flex>
+        <md-input-container flex>
+          <label>نام توسعه‌دهنده</label>
+          <input type="text" ng-model="$ctrl.payload.authorName">
+        </md-input-container>
+        <md-input-container flex>
+          <label>پست الکترونیکی توسعه‌دهنده</label>
+          <input type="email" class="ltr" ng-model="$ctrl.payload.authorEmail">
+        </md-input-container>
+      </div>
+      <div layout="row" flex>
+        <md-input-container flex>
+          <label>نام مسئول پشتیبانی</label>
+          <input type="text" ng-model="$ctrl.payload.maintainerName">
+        </md-input-container>
+        <md-input-container flex>
+          <label>پست الکترونیکی پشتیبانی</label>
+          <input type="email" class="ltr" ng-model="$ctrl.payload.maintainerEmail">
+        </md-input-container>
+      </div>
+      <div layout="row" flex>
+        <md-checkbox ng-model="$ctrl.payload.active">
+          بعد از ارسال، این آنتولوژی فعال شود.
+        </md-checkbox>
+      </div>
+      <div layout="row" flex>
+        <input class="ng-hide" type="file" id="owl-file-selector" aria-label="فایل آنتولوژی">
+        <label for="owl-file-selector" class="md-button md-raised md-primary">فایل</label>
+      </div>
+    </form>
+    <div flex layout="row" layout-align="end center">
+      <md-button class="md-raised" ng-click="$ctrl.cancel()">
+        بازگشت
+      </md-button>
+      <md-button class="md-primary md-raised" ng-click="$ctrl.submit()">
+        ارسال
+      </md-button>
+    </div>
+  </div>
+</md-content>

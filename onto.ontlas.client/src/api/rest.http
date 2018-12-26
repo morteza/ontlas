@@ -1,0 +1,72 @@
+
+# Fetch all CMS documents
+GET {{api.server}}/cms HTTP/1.1
+Authorization: Bearer {{jwt.token}}
+Content-Type: application/json
+
+### Create new CMS document
+
+POST {{api.server}}/cms HTTP/1.1
+Authorization: Bearer {{jwt.token}}
+Content-Type: application/json
+
+{
+  "title":"test morteza rest",
+  "content":"hello again"
+}
+
+### Get specific CMS document by id
+
+GET {{api.server}}/cms/590afa4843f05445fdc4ba28 HTTP/1.1
+Authorization: Bearer {{jwt.token}}
+Accept: application/json
+
+### Get Wiki homepage documents
+
+GET {{api.server}}/wiki/owl:Thing HTTP/1.1
+Authorization: Bearer {{jwt.token}}
+Accept: application/json
+
+### Get Wiki page by IRI
+
+GET {{api.server}}/wiki/owl:Thing HTTP/1.1
+Authorization: Bearer {{jwt.token}}
+Accept: application/json
+
+### Get Label by IRI
+
+GET {{api.server}}/ontologies/ontlas:Man/label HTTP/1.1
+Authorization: Bearer {{jwt.token}}
+Accept: application/json
+
+### Reload Ontology
+
+GET {{api.server}}/ontologies/reload HTTP/1.1
+Authorization: Bearer {{jwt.token}}
+Accept: application/json
+
+### Search Wiki
+
+GET {{api.server}}/wiki/search?q=مرتضی HTTP/1.1
+Authorization: Bearer {{jwt.token}}
+Accept: application/json
+
+### Ontology Class Usage
+
+GET {{api.server}}/ontologies/ontlas:ManCauses/usage HTTP/1.1
+Authorization: Bearer {{jwt.token}}
+Accept: application/json
+
+### List named queries
+
+GET {{api.server}}/queries/ HTTP/1.1
+Authorization: Bearer {{jwt.token}}
+Accept: application/json
+Content-Type: application/json
+
+### Get details for a named query
+GET {{api.server}}/queries/ontlas:ManCauses HTTP/1.1
+Authorization: Bearer {{jwt.token}}
+Accept: application/json
+Content-Type: application/json
+
