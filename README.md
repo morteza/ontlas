@@ -3,25 +3,21 @@
 Ontlas is an ontology-driven SKOS-based atlas.
 
 This project is however a proof-of-concept for a bigger knowledge engineering issue,
-and yet a playground so I can experience and learn some new technologies (mainly new OWL-API 5.x, Vert.x 3.x, and React).
+and still a playground to learn and experiment with some related technologies.
 
 
 # Instruction
 
-Here are simple steps for non-technical enthusiasts to compile Ontlas, deploy and execute the jar file from from source codes:
+Here are the steps to compile, deploy and execute the jar file from from source codes:
 
-- Install Maven or Gradle! Described below you find out how to build Ontlas by Maven, but gradle works similarly.
+- Install Maven or Gradle! Described below, you can find out how to build Ontlas using Maven; gradle works similarly.
 - Change current directory to the root directory of the project, where `pom.xml` fiel exists.
-- Run the following command inside the project directory: `mvn clean install compile package`.
-- If it builds successfully, there must be an `ontlas-<version>-fat.jar` file inside `target/` directory (e.g. `target/ontlas-0.0.1-fat.jar`).
-  This file encapsulates all dependencies and resources into a single jar file; ready to be deployed. 
-- Run this file simply by `java -jar <jar_file_path>`, then go to the `http://localhost:8080` in your browser.
-- You can also pass a configuration file with `-conf` argument when executing the jar file (e.g. to set a custom port).
+- Run the following command to preapre dependencies and make the package: `mvn clean install compile package`.
+- If it builds the package successfully, there must be an `ontlas-<version>-fat.jar` file inside the `target/` directory (e.g., `target/ontlas-0.0.1-fat.jar`).
+  This file contains all dependencies and resources; ready to be deployed. 
+- Run this file by `java -jar <jar_file_path>`, then open up the `http://localhost:8080` in your browser.
+  - To set a custom port, you can provide a configuration file using an additional `-conf` argument.
 
-
-# Contributors
-
-- [Morteza Ansarinia](http://github.com/morteza)
 
 # License
 
